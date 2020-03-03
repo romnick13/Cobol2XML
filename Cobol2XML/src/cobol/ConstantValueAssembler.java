@@ -3,7 +3,7 @@ package cobol;
 import parse.*;
 import parse.tokens.*;
 
-public class ConstantValueAssembler  extends Assembler{
+public class ConstantValueAssembler  extends Assembler {
 
 	@Override
 	public void workOn(Assembly a) {

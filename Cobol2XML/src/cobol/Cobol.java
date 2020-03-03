@@ -36,6 +36,8 @@ public class Cobol implements PubliclyCloneable {
 	protected double constantValue;
 	protected int lineNumber = 0;
 	
+	
+	//getter and setter for constants variables
 	public String getConstantName() {
 		return constantName;
 	}

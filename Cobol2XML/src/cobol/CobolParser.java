@@ -21,12 +21,10 @@
 package cobol;
 
 import parse.Alternation;
-import parse.Repetition;
 import parse.Empty;
 import parse.Parser;
 import parse.Sequence;
 import parse.tokens.CaselessLiteral;
-import parse.tokens.Literal;
 import parse.tokens.Num;
 import parse.tokens.Symbol;
 import parse.tokens.Tokenizer;
@@ -49,7 +47,9 @@ public class CobolParser {
 		Symbol fullstop = new Symbol('.');
 		fullstop.discard();
 		
-		a.add( constantValue());
+		a.add( CommentLine());
+		
+		a.add( ConstantValue());
 		
 		a.add( ProgramID() );
 		
@@ -158,7 +158,7 @@ public class CobolParser {
 	 *   
 	 *    <line number> <contstant name> "value" <constant value>.  
 	 */
-	protected Parser constantValue() 
+	protected Parser ConstantValue() 
 	{
 		//System.out.println("constantValueAssembler()");
 		Sequence s = new Sequence();
@@ -167,6 +167,20 @@ public class CobolParser {
 		s.add(new CaselessLiteral("value"));
 		s.add(new Num());
 		s.setAssembler(new ConstantValueAssembler());
+		return s;
+	}
+	
+	protected Parser CommentLine() 
+	{
+		Sequence s = new Sequence();
+		s.add(new Symbol("*"));
+		s.add(new Symbol("*"));
+		s.add(new Symbol("*"));
+		s.add(new Symbol("-"));
+		s.add(new Symbol("-"));
+		s.add(new Symbol("-"));
+		s.add(new Word().setAssembler(new CommentLineAssembler()));
+		//s.setAssembler(new CommentLineAssembler());
 		return s;
 	}
 

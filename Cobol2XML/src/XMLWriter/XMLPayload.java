@@ -60,7 +60,23 @@ public class XMLPayload {
 	public void addElements(Cobol c) {
 		/*
 		 *  add commentLine element
-		 */	
+		 */
+		String commentLine = c.getCommentLine();
+		if (commentLine != null) 
+		{
+			this.addCommentLineElement(commentLine);
+//			System.out.println(commentLine);
+			//System.out.println("Got Section");  
+			// Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}
+		
+		/*
+		 * add constants elements
+		 */
 		String constantName = c.getConstantName();
 		if (constantName != null) 
 		{
@@ -263,6 +279,17 @@ public class XMLPayload {
 			constantID.setAttributeNode(attrType1);
 			cobolname.appendChild(constantID);
 			
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addCommentLineElements(String stringElement) 
+	{
+		//Comment Line element
+		if (stringElement != null) 
+		{
+			Element cobolname = doc.createElement("comment");
+			cobolname.appendChild(doc.createTextNode(stringElement));
 			rootElement.appendChild(cobolname);
 		}
 	}
