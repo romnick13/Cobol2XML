@@ -10,4 +10,4 @@ working-storage section.
 
 procedure division.
 parser comment.
-***--- This is a comment 
+***--- This is a comment

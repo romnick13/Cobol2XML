@@ -179,8 +179,11 @@ public class CobolParser {
 		s.add(new Symbol("-"));
 		s.add(new Symbol("-"));
 		s.add(new Symbol("-"));
-		s.add(new Word().setAssembler(new CommentLineAssembler()));
+		
+		s.add(new Word().setAssembler(new CommentLineAssembler()));		
 		//s.setAssembler(new CommentLineAssembler());
+		
+		System.out.println(s.getSubparsers().toString());
 		return s;
 	}
 

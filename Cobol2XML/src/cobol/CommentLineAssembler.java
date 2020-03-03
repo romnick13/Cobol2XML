@@ -14,14 +14,16 @@ public class CommentLineAssembler extends Assembler {
 		//System.out.println("commentLineAssembler");
 		Cobol c = new Cobol();
 		Token t = (Token) a.pop();
-		if (t.sval() != null) 
-		{
-			c.setCommentLine(t.sval().trim());
-			
-			a.setTarget(c);
-			
-			System.out.println("XXXX: " + a.toString());
+		
+		if(t.sval() != null) {
+			c.setCommentLine(t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
+			a.setTarget(c); }
 		}
-	}
+
+		public String defaultDelimiter() {
+		String delimiter = " ";
+		return delimiter; 
+		}
+	
 	
 }
