@@ -59,10 +59,21 @@ public class CobolParser {
 		
 		a.add( DateWritten() );
 		
+		a.add( Remarks() );
+		
 		a.add(new Empty());
 		return a;
 	}
 	
+	protected Parser Remarks() {
+		// TODO Auto-generated method stub
+		Sequence s = new Sequence() ;
+		s.add(new Word().setAssembler(new RemarksAssembler()));
+		s.add(new CaselessLiteral("remarks") );
+		s.add(new Symbol('.').discard());
+		return s;	
+	}
+
 	/*
 	 * Return a parser that will recognize the grammar:
 	 * 

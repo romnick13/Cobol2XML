@@ -4,7 +4,7 @@ program-id.  base.
 
 date-written.  07-mar-1995 - mb.
 
-remarks.
+filetest remarks.
 
      This program convert a value of a generic system base to a numeric value
      and viceversa.
