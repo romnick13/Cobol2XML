@@ -16,13 +16,14 @@ public class CommentLineAssembler extends Assembler {
 		Token t = (Token) a.pop();
 		
 		if(t.sval() != null) {
-			c.setCommentLine(t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
-			a.setTarget(c); }
+				c.setCommentLine(t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
+				a.setTarget(c); 
+			}
 		}
 
 		public String defaultDelimiter() {
-		String delimiter = " ";
-		return delimiter; 
+			String delimiter = " ";
+			return delimiter; 
 		}
 	
 	
