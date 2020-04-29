@@ -36,8 +36,21 @@ public class Cobol implements PubliclyCloneable {
 	protected double constantValue;
 	protected int lineNumber = 0;
 	protected String remarks;
+	protected String perform, hexData;
 	
 	
+	public String getHexData() {
+		return hexData;
+	}
+	public void setHexData(String hexData) {
+		this.hexData = hexData;
+	}
+	public String getPerform() {
+		return perform;
+	}
+	public void setPerform(String perform) {
+		this.perform = perform;
+	}
 	//getter and setter for constants variables
 	public String getConstantName() {
 		return constantName;

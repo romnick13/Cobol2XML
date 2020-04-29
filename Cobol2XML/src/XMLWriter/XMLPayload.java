@@ -58,6 +58,32 @@ public class XMLPayload {
 	
 	
 	public void addElements(Cobol c) {
+		String hexData = c.getHexData();
+		if (hexData != null) 
+		{
+			this.addHexadecimalData(hexData);
+//			System.out.println(commentLine);
+			//System.out.println("Got Section");  
+			// Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}
+		
+		String perform = c.getPerform();
+		if (perform != null) 
+		{
+			this.addPerformMethod(perform);;
+//			System.out.println(commentLine);
+			//System.out.println("Got Section");  
+			// Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}
+		
 		/*
 		 *  add commentLine element
 		 */
@@ -306,6 +332,22 @@ public class XMLPayload {
 	void addRemarksComment(String stringElement) {
 		if(stringElement != null) {
 			Element cobolname = doc.createElement("remarks");
+			cobolname.appendChild(doc.createTextNode(stringElement));
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addPerformMethod(String stringElement) {
+		if (stringElement != null) {
+			Element cobolname = doc.createElement("perform");
+			cobolname.appendChild(doc.createTextNode(stringElement));
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addHexadecimalData(String stringElement) {
+		if (stringElement != null) {
+			Element cobolname = doc.createElement("hex_dec_data");
 			cobolname.appendChild(doc.createTextNode(stringElement));
 			rootElement.appendChild(cobolname);
 		}

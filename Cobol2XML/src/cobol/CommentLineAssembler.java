@@ -4,7 +4,7 @@ import parse.*;
 import parse.tokens.*;
 public class CommentLineAssembler extends Assembler {
 	/**  
-	 * Pop a string, and set the target DataDivision to this  
+	 * Pop a string, and set the target CommenLine to this  
 	 * string.  
 	 *  
 	 * @param   Assembly   the assembly to work on  
@@ -25,6 +25,4 @@ public class CommentLineAssembler extends Assembler {
 			String delimiter = " ";
 			return delimiter; 
 		}
-	
-	
 }

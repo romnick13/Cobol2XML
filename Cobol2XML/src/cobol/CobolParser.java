@@ -26,6 +26,7 @@ import parse.Parser;
 import parse.Sequence;
 import parse.tokens.CaselessLiteral;
 import parse.tokens.Num;
+import parse.tokens.QuotedString;
 import parse.tokens.Symbol;
 import parse.tokens.Tokenizer;
 import parse.tokens.Word;
@@ -61,17 +62,36 @@ public class CobolParser {
 		
 		a.add( Remarks() );
 		
+		a.add( PerformMethod());
+		
+		a.add( HexadecimalData());
+		
 		a.add(new Empty());
 		return a;
 	}
 	
+	protected Parser HexadecimalData() {
+		// TODO Auto-generated method stub
+		Sequence s = new Sequence() ;
+		s.add(new QuotedString().setAssembler(new HexDataAssembler()));
+		return s;
+	}
+	
+	protected Parser PerformMethod() {
+		Sequence s = new Sequence() ;
+		s.add(new CaselessLiteral("perform") );
+		s.add(new Word().setAssembler(new PerformAssembler()));
+		return s;	
+	}
+	
+
 	protected Parser Remarks() {
 		// TODO Auto-generated method stub
 		Sequence s = new Sequence() ;
 		s.add(new Word().setAssembler(new RemarksAssembler()));
 		s.add(new CaselessLiteral("remarks") );
 		s.add(new Symbol('.').discard());
-		return s;	
+		return s;
 	}
 
 	/*
@@ -194,7 +214,7 @@ public class CobolParser {
 		s.add(new Word().setAssembler(new CommentLineAssembler()));		
 		//s.setAssembler(new CommentLineAssembler());
 		
-		System.out.println(s.getSubparsers().toString());
+		//System.out.println(s.getSubparsers().toString());
 		return s;
 	}
 
