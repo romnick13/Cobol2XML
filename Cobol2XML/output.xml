@@ -5,7 +5,6 @@
     <day-date-written>7</day-date-written>
     <month-date-written>mar</month-date-written>
     <year-date-written>1995</year-date-written>
-    <remarks>filetest</remarks>
     <division>data</division>
     <section>working-storage</section>
     <Constant>
@@ -30,11 +29,21 @@
     </Constant>
     <hex_dec_data>"000101202303404505606707808909A10B11C12D13E14F15"</hex_dec_data>
     <division>procedure</division>
+    <display_function>window erase</display_function>
+    <accept_funtion>current_base convert</accept_funtion>
+    <accept_funtion>entry_char </accept_funtion>
     <perform>base-to-decimal thru base-to-decimal-ex</perform>
     <perform>decimal-to-base thru decimal-to-base-ex</perform>
+    <accept_funtion>omitted </accept_funtion>
     <comment>convert from decimal to base system</comment>
+    <move_function>entry_number to w_number</move_function>
+    <move_function>spaces to entry_char</move_function>
     <perform>until w_number &lt; current_base</perform>
+    <move_function>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</move_function>
+    <move_function>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</move_function>
     <comment>convert from base to dicimal system</comment>
     <comment>allineamento a destra della variabile entry_char ( ver 2.3 0.1 o sup )</comment>
     <perform>test after varying ind from 1.0 by 1.0 until ind = 16.0</perform>
+    <move_function>dec_value ( hex_idx ) to rest_divide</move_function>
+    <move_function>w_number to entry_number .</move_function>
 </cobol>

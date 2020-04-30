@@ -58,6 +58,46 @@ public class XMLPayload {
 	
 	
 	public void addElements(Cobol c) {
+		
+		String accept = c.getAccept();
+		if (accept != null) 
+		{
+			this.addAccept(accept);
+//			System.out.println(commentLine);
+			//System.out.println("Got Section");  
+			// Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}
+		
+		String display = c.getDisplay();
+		if (display != null) 
+		{
+			this.addDisplay(display);
+//			System.out.println(commentLine);
+			//System.out.println("Got Section");  
+			// Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}
+		
+		String moveMethod = c.getMove();
+		if (moveMethod != null) 
+		{
+			this.addMoveData(moveMethod);
+//			System.out.println(commentLine);
+			//System.out.println("Got Section");  
+			// Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}
+		
 		String hexData = c.getHexData();
 		if (hexData != null) 
 		{
@@ -348,6 +388,36 @@ public class XMLPayload {
 	void addHexadecimalData(String stringElement) {
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("hex_dec_data");
+			cobolname.appendChild(doc.createTextNode(stringElement));
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addMoveData(String stringElement) 
+	{
+		//  Program ID element
+		if (stringElement != null) {
+			Element cobolname = doc.createElement("move_function");
+			cobolname.appendChild(doc.createTextNode(stringElement));
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addDisplay(String stringElement) 
+	{
+		//  Program ID element
+		if (stringElement != null) {
+			Element cobolname = doc.createElement("display_function");
+			cobolname.appendChild(doc.createTextNode(stringElement));
+			rootElement.appendChild(cobolname);
+		}
+	}
+	
+	void addAccept(String stringElement) 
+	{
+		//  Program ID element
+		if (stringElement != null) {
+			Element cobolname = doc.createElement("accept_funtion");
 			cobolname.appendChild(doc.createTextNode(stringElement));
 			rootElement.appendChild(cobolname);
 		}

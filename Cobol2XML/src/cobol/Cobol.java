@@ -36,9 +36,26 @@ public class Cobol implements PubliclyCloneable {
 	protected double constantValue;
 	protected int lineNumber = 0;
 	protected String remarks;
-	protected String perform, hexData;
+	protected String perform, hexData, move, display, accept;
 	
-	
+	public String getAccept() {
+		return accept;
+	}
+	public void setAccept(String accept) {
+		this.accept = accept;
+	}
+	public String getMove() {
+		return move;
+	}
+	public String getDisplay() {
+		return display;
+	}
+	public void setDisplay(String display) {
+		this.display = display;
+	}
+	public void setMove(String move) {
+		this.move = move;
+	}
 	public String getHexData() {
 		return hexData;
 	}

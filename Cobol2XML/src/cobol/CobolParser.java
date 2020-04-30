@@ -66,20 +66,75 @@ public class CobolParser {
 		
 		a.add( HexadecimalData());
 		
+		a.add(MoveFunction());
+		
+		a.add(DisplayFunction());
+		
+		a.add(AcceptFunction());
+		
 		a.add(new Empty());
 		return a;
 	}
 	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Accept Function = Word;
+	 *
+	 */
+	protected Parser AcceptFunction() 
+	{
+		Sequence s = new Sequence();
+		s.add(new CaselessLiteral("accept"));
+		s.add(new Word().setAssembler(new AcceptAssembler()));
+		return s;
+	}
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Display Function = Word;
+	 *
+	 */
+	protected Parser DisplayFunction() 
+	{
+		Sequence s = new Sequence();
+		s.add(new CaselessLiteral("display"));
+		s.add(new Word().setAssembler(new DisplayAssember()));
+		return s;
+	}
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *   Move Function = Word;
+	 *
+	 */
+	protected Parser MoveFunction() {
+		Sequence s = new Sequence();
+		s.add(new CaselessLiteral("move"));
+		s.add(new Word().setAssembler(new MoveAssembler()));
+		return s;
+	}
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Hexadecimal Data = Word;
+	 *
+	 */
 	protected Parser HexadecimalData() {
 		// TODO Auto-generated method stub
 		Sequence s = new Sequence() ;
 		s.add(new QuotedString().setAssembler(new HexDataAssembler()));
 		return s;
 	}
-	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Program Identifier = Word;
+	 *
+	 */
 	protected Parser PerformMethod() {
 		Sequence s = new Sequence() ;
-		s.add(new CaselessLiteral("perform") );
+		s.add(new CaselessLiteral("perform"));
 		s.add(new Word().setAssembler(new PerformAssembler()));
 		return s;	
 	}
@@ -88,9 +143,9 @@ public class CobolParser {
 	protected Parser Remarks() {
 		// TODO Auto-generated method stub
 		Sequence s = new Sequence() ;
-		s.add(new Word().setAssembler(new RemarksAssembler()));
 		s.add(new CaselessLiteral("remarks") );
 		s.add(new Symbol('.').discard());
+		s.add(new Word().setAssembler(new RemarksAssembler()));
 		return s;
 	}
 
