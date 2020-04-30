@@ -14,7 +14,7 @@ public class DisplayAssember extends Assembler{
 		
 		if(t.sval() != null) {
 			c.setDisplay(t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
-			a.setTarget(c);
+			a.setTarget(c); 
 		}
 	}
 
@@ -22,6 +22,4 @@ public class DisplayAssember extends Assembler{
 		String delimiter = " ";
 		return delimiter; 
 	}
-
-
 }

@@ -21,6 +21,7 @@
 package cobol;
 
 import parse.Alternation;
+import parse.Assembly;
 import parse.Empty;
 import parse.Parser;
 import parse.Sequence;
@@ -29,6 +30,7 @@ import parse.tokens.Num;
 import parse.tokens.QuotedString;
 import parse.tokens.Symbol;
 import parse.tokens.Tokenizer;
+import parse.tokens.WhitespaceState;
 import parse.tokens.Word;
 
 public class CobolParser {
@@ -99,7 +101,8 @@ public class CobolParser {
 	{
 		Sequence s = new Sequence();
 		s.add(new CaselessLiteral("display"));
-		s.add(new Word().setAssembler(new DisplayAssember()));
+		s.add(new QuotedString());
+		s.setAssembler(new DisplayAssember());
 		return s;
 	}
 	/*

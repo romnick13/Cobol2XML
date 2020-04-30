@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <cobol>
-<<<<<<< HEAD
     <division>identification</division>
     <Program-ID>base</Program-ID>
     <day-date-written>7</day-date-written>
@@ -28,13 +27,16 @@
         <base_16 Line_Number="88"/>
         <base_16 Value="16.0"/>
     </Constant>
-    <hex_dec_data>"000101202303404505606707808909A10B11C12D13E14F15"</hex_dec_data>
+    <hex_dec_data>000101202303404505606707808909A10B11C12D13E14F15</hex_dec_data>
     <division>procedure</division>
-    <display_function>window erase</display_function>
+    <display_function>"Base:  " no</display_function>
     <accept_funtion>current_base convert</accept_funtion>
+    <display_function>"Value: " no</display_function>
     <accept_funtion>entry_char </accept_funtion>
     <perform>base-to-decimal thru base-to-decimal-ex</perform>
+    <display_function>"Decimal  value: " entry_char</display_function>
     <perform>decimal-to-base thru decimal-to-base-ex</perform>
+    <display_function>"Base: " current_base " value: " entry_char</display_function>
     <accept_funtion>omitted </accept_funtion>
     <comment>convert from decimal to base system</comment>
     <move_function>entry_number to w_number</move_function>
@@ -47,43 +49,4 @@
     <perform>test after varying ind from 1.0 by 1.0 until ind = 16.0</perform>
     <move_function>dec_value ( hex_idx ) to rest_divide</move_function>
     <move_function>w_number to entry_number .</move_function>
-=======
-<division>identification</division>
-<Program-ID>base</Program-ID>
-<day-date-written>7</day-date-written>
-<month-date-written>mar</month-date-written>
-<year-date-written>1995</year-date-written>
-<remarks>filetest</remarks>
-<division>data</division>
-<section>working-storage</section>
-<Constant>
-<Constant Name="base_2"/>
-<base_2 Line_Number="88"/>
-<base_2 Value="2.0"/>
-</Constant>
-<Constant>
-<Constant Name="base_8"/>
-<base_8 Line_Number="88"/>
-<base_8 Value="8.0"/>
-</Constant>
-<Constant>
-<Constant Name="base_10"/>
-<base_10 Line_Number="88"/>
-<base_10 Value="10.0"/>
-</Constant>
-<Constant>
-<Constant Name="base_16"/>
-<base_16 Line_Number="88"/>
-<base_16 Value="16.0"/>
-</Constant>
-<hex_dec_data>000101202303404505606707808909A10B11C12D13E14F15</hex_dec_data>
-<division>procedure</division>
-<perform>base-to-decimal thru base-to-decimal-ex</perform>
-<perform>decimal-to-base thru decimal-to-base-ex</perform>
-<comment>convert from decimal to base system</comment>
-<perform>until w_number &lt; current_base</perform>
-<comment>convert from base to dicimal system</comment>
-<comment>allineamento a destra della variabile entry_char ( ver 2.3 0.1 o sup )</comment>
-<perform>test after varying ind from 1.0 by 1.0 until ind = 16.0</perform>
->>>>>>> 1f128bcf708873745d0ba501701adaca5842d6c8
 </cobol>
