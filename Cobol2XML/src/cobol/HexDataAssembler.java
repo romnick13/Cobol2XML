@@ -14,6 +14,9 @@ public class HexDataAssembler extends Assembler{
 		
 		c.setHexData(t.sval().trim().substring(1, t.sval().length() - 1));
 		a.setTarget(c);
+		
+		//System.out.println(Long.parseLong(t.sval().trim().substring(1, t.sval().length() - 1), 16));
+
 	}
 
 }
