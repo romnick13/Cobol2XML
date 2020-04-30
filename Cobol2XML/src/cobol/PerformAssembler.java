@@ -13,7 +13,7 @@ public class PerformAssembler extends Assembler{
 		Token t = (Token) a.pop();
 		
 		if(t.sval() != null) {
-			c.setPerform(t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
+			c.setPerform(t.sval().trim() + defaultDelimiter() + a.remainder(defaultDelimiter()));
 			a.setTarget(c); 
 		}
 	}
