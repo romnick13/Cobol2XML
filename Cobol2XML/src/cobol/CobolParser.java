@@ -121,7 +121,6 @@ public class CobolParser {
 	 *
 	 */
 	protected Parser HexadecimalData() {
-		// TODO Auto-generated method stub
 		Sequence s = new Sequence() ;
 		s.add(new QuotedString().setAssembler(new HexDataAssembler()));
 		return s;
@@ -141,7 +140,6 @@ public class CobolParser {
 	
 
 	protected Parser Remarks() {
-		// TODO Auto-generated method stub
 		Sequence s = new Sequence() ;
 		s.add(new CaselessLiteral("remarks") );
 		s.add(new Symbol('.').discard());
