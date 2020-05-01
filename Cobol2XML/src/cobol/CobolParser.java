@@ -21,7 +21,6 @@
 package cobol;
 
 import parse.Alternation;
-import parse.Assembly;
 import parse.Empty;
 import parse.Parser;
 import parse.Sequence;
@@ -30,7 +29,6 @@ import parse.tokens.Num;
 import parse.tokens.QuotedString;
 import parse.tokens.Symbol;
 import parse.tokens.Tokenizer;
-import parse.tokens.WhitespaceState;
 import parse.tokens.Word;
 
 public class CobolParser {
@@ -74,8 +72,19 @@ public class CobolParser {
 		
 		a.add(AcceptFunction());
 		
+		a.add(CallMethod());
+		
 		a.add(new Empty());
 		return a;
+	}
+	
+	protected Parser CallMethod() {
+		Sequence s = new Sequence() ;
+		s.add(new CaselessLiteral("call") );
+		s.add(new QuotedString());
+		s.add(new Word());
+		s.setAssembler(new CallAssembler());
+		return s;
 	}
 	
 	/*
@@ -144,9 +153,7 @@ public class CobolParser {
 
 	protected Parser Remarks() {
 		Sequence s = new Sequence() ;
-		s.add(new CaselessLiteral("remarks") );
-		s.add(new Symbol('.').discard());
-		s.add(new Word().setAssembler(new RemarksAssembler()));
+		s.add(new CaselessLiteral("remarks").setAssembler(new RemarksAssembler()));
 		return s;
 	}
 

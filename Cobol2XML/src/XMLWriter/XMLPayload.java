@@ -59,43 +59,58 @@ public class XMLPayload {
 	
 	public void addElements(Cobol c) {
 		
+		/*
+		 * add constants elements
+		 */
+		String callMethod = c.getCall();
+		if (callMethod != null) 
+		{
+			this.addCallFunction( callMethod, c.getUsing());
+			//System.out.println("Got Section"); 
+			//Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}	//end method addElements()
+		
 		String accept = c.getAccept();
 		if (accept != null) 
 		{
 			this.addAccept(accept);
-//			System.out.println(commentLine);
+//			System.out.println(accept);
 			//System.out.println("Got Section");  
 			// Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("Accept null");
 		}
 		
 		String display = c.getDisplay();
 		if (display != null) 
 		{
 			this.addDisplay(display);
-//			System.out.println(commentLine);
+//			System.out.println(display);
 			//System.out.println("Got Section");  
 			// Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("Display null");
 		}
 		
 		String moveMethod = c.getMove();
 		if (moveMethod != null) 
 		{
 			this.addMoveData(moveMethod);
-//			System.out.println(commentLine);
+//			System.out.println(move);
 			//System.out.println("Got Section");  
 			// Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("Move null");
 		}
 		
 		String hexData = c.getHexData();
@@ -103,25 +118,25 @@ public class XMLPayload {
 		{
 			this.addHexadecimalData(hexData);
 //			System.out.println(commentLine);
-			//System.out.println("Got Section");  
+			//System.out.println("hex");  
 			// Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("Hexadecimal null");
 		}
 		
 		String perform = c.getPerform();
 		if (perform != null) 
 		{
 			this.addPerformMethod(perform);;
-//			System.out.println(commentLine);
+//			System.out.println(perform);
 			//System.out.println("Got Section");  
 			// Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("Perform null");
 		}
 		
 		/*
@@ -423,4 +438,28 @@ public class XMLPayload {
 		}
 	}
 
+	void addCallFunction(String variable,  String method) 
+	{
+		//  Program ID element
+		if(variable != null) 
+		{
+			Element cobolname = doc.createElement("Call_Method"); 
+			
+			//insert name of constant into XML file
+			Element var = doc.createElement("call");   
+			Attr attrType2 = doc.createAttribute("var_used" );   
+			attrType2.setValue(variable );   
+			var.setAttributeNode(attrType2);   
+			cobolname.appendChild(var);
+			
+			Element met = doc.createElement("call");   
+			Attr attrType = doc.createAttribute("method" );   
+			attrType.setValue(method );   
+			met.setAttributeNode(attrType);   
+			cobolname.appendChild(met);
+			
+					
+			rootElement.appendChild(cobolname);
+		}
+	}
 }

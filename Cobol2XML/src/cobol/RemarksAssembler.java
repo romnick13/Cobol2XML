@@ -14,5 +14,4 @@ public class RemarksAssembler extends Assembler{
 		c.setRemarks(t.sval().trim());
 		a.setTarget(c);
 	}
-
 }

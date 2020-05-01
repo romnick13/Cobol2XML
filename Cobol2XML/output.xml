@@ -5,6 +5,7 @@
     <day-date-written>7</day-date-written>
     <month-date-written>mar</month-date-written>
     <year-date-written>1995</year-date-written>
+    <remarks>remarks</remarks>
     <division>data</division>
     <section>working-storage</section>
     <Constant>
@@ -46,6 +47,14 @@
     <move_function>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</move_function>
     <comment>convert from base to dicimal system</comment>
     <comment>allineamento a destra della variabile entry_char ( ver 2.3 0.1 o sup )</comment>
+    <Call_Method>
+        <call var_used="&quot;c$justify&quot;"/>
+        <call method=" entry_char &quot;R&quot; ."/>
+    </Call_Method>
+    <Call_Method>
+        <call var_used="&quot;c$toupper&quot;"/>
+        <call method=" entry_char , value 16.0"/>
+    </Call_Method>
     <perform>test after varying ind from 1.0 by 1.0 until ind = 16.0</perform>
     <move_function>dec_value ( hex_idx ) to rest_divide</move_function>
     <move_function>w_number to entry_number .</move_function>
