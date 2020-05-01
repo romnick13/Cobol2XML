@@ -60,7 +60,22 @@ public class XMLPayload {
 	public void addElements(Cobol c) {
 		
 		/*
-		 * add constants elements
+		 * add call elements
+		 */
+		String compute = c.getCompute();
+		if (compute != null) 
+		{
+			this.addCompute( compute);
+			//System.out.println("Got Section"); 
+			//Add contents of procedure division
+		}
+		else 
+		{
+			//System.out.println("Comment Line null");
+		}	//end method addElements()
+		
+		/*
+		 * add call elements
 		 */
 		String callMethod = c.getCall();
 		if (callMethod != null) 
@@ -462,4 +477,14 @@ public class XMLPayload {
 			rootElement.appendChild(cobolname);
 		}
 	}
+	
+	void addCompute(String stringElement) 
+	{
+		//  Program ID element
+		if (stringElement != null) {
+			Element cobolname = doc.createElement("compute");
+			cobolname.appendChild(doc.createTextNode(stringElement));
+			rootElement.appendChild(cobolname);
+		}
+	} 
 }

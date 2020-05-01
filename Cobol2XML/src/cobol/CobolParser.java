@@ -74,8 +74,17 @@ public class CobolParser {
 		
 		a.add(CallMethod());
 		
+		a.add(ComputeMethod());
+		
 		a.add(new Empty());
 		return a;
+	}
+	protected Parser ComputeMethod() {
+		Sequence s = new Sequence() ;
+		s.add(new CaselessLiteral("compute") );
+		s.add(new Word());
+		s.setAssembler(new ComputeAssembler());
+		return s;
 	}
 	
 	protected Parser CallMethod() {
