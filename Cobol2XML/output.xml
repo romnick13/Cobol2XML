@@ -57,6 +57,6 @@
     </Call_Method>
     <perform>test after varying ind from 1.0 by 1.0 until ind = 16.0</perform>
     <move_function>dec_value ( hex_idx ) to rest_divide</move_function>
-    <compute>w_number</compute>
+    <compute>w_number=w_number+rest_divide*current_base**(16.0-ind)</compute>
     <move_function>w_number to entry_number .</move_function>
 </cobol>

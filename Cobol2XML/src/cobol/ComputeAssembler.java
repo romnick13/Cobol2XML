@@ -12,8 +12,17 @@ public class ComputeAssembler extends Assembler{
 		Cobol c = new Cobol();
 		Token t = (Token) a.pop();
 		
-		c.setCompute(t.sval().trim());
-		a.setTarget(c);
+		if(t.sval() != null) {
+			c.setCompute(t.sval().trim()+ a.remainder(defaultDelimiter()));
+			a.setTarget(c); 
+		}
+		//System.out.println("test:" + t.sval().trim()+ a.remainder(defaultDelimiter()));
 	}
+
+	public String defaultDelimiter() {
+		String delimiter = "";
+		return delimiter; 
+	}
+	
 
 }

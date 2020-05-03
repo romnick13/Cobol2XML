@@ -40,7 +40,6 @@ public class Cobol implements PubliclyCloneable {
 	protected String call, using;
 	
 	
-	
 	public String getCompute() {
 		return compute;
 	}
