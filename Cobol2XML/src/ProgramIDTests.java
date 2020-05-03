@@ -10,25 +10,21 @@ import parse.Parser;
 import parse.tokens.TokenAssembly;
 import parse.tokens.Tokenizer;
 
-public class ComputeTest {
-
+public class ProgramIDTests {
+	
 	@Test
-	public void testCompute() {
-		String compute = "w_number=w_number+rest_divide*current_base**(16.0-ind)";
-		
+	public void testProgramID() {
 		Tokenizer t = CobolParser.tokenizer();
 		Parser p = CobolParser.start();
 		
-		t.setString("compute " + compute);
+		t.setString("program-id.  base.");
 		Assembly in = new TokenAssembly(t);
 		Assembly out = p.bestMatch(in);
 		
 		Cobol c = new Cobol();
 		c = (Cobol) out.getTarget();
 		
-		String result = "w_number=w_number+rest_divide*current_base**(16.0-ind)";
-		
-		assertNotNull(c.getCompute());
-		assertEquals(c.getCompute(), result);
+		assertNotNull(c.getProgram_ID());
+		assertEquals(c.getProgram_ID(), "base");
 	}
 }

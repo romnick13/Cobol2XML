@@ -38,9 +38,11 @@ public void workOn(Assembly a) {
 	// deconstrct toak string into month and year components
 	String monthString = "" + tokenString.charAt(0) + tokenString.charAt(1) + tokenString.charAt(2);
 	c.setMonthDateWritten(monthString);
+	//System.out.println("TEST " + monthString);
 	
 	String yearString = "" + tokenString.charAt(4) + tokenString.charAt(5) + tokenString.charAt(6) + tokenString.charAt(7);
 	c.setYearDateWritten(Integer.parseInt(yearString));
+	//System.out.println("TEST " + yearString);
 	
 	t = (Token) a.pop();
 	c.setDayDateWritten( (int) t.nval() );

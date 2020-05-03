@@ -11,6 +11,7 @@ public class ConstantValueAssembler  extends Assembler {
 		Token t = (Token) a.pop();
 		c.setConstantValue( t.nval());
 		//System.out.println("Token string[4]: " + c.getConstantValue() );
+		//System.out.println("value " + c.getConstantValue() );
 		
 		t = (Token) a.pop();
 		//This should be the word "value" so we don't need any action here
@@ -20,9 +21,13 @@ public class ConstantValueAssembler  extends Assembler {
 		t = (Token) a.pop();
 		c.setConstantName(t.sval());
 		//System.out.println("Token string[2]: " + c.getConstantName() );
+		//System.out.println("name " + c.getConstantName() );
+		
 		t = (Token) a.pop();
 		c.setLineNumber( (int) Math.round(t.nval()));
 		//System.out.println("Token string[2]: " + c.getLineNumber() );
+		//System.out.println("lineNum " + c.getLineNumber() );
+		
 		a.setTarget(c);
 	}
 

@@ -33,7 +33,10 @@ public class Program_idAssembler extends Assembler {
 public void workOn(Assembly a) {
 	Cobol c = new Cobol();
 	Token t = (Token) a.pop();
+	
 	c.setProgram_ID(t.sval().trim());
 	a.setTarget(c);
-}
+	
+	//System.out.println("TEST" + t.sval().trim());
+	}
 }

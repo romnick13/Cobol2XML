@@ -18,6 +18,8 @@ public class CommentLineAssembler extends Assembler {
 		if(t.sval() != null) {
 				c.setCommentLine(t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
 				a.setTarget(c); 
+				
+				//System.out.println("TEST " +  t.sval().trim()+ defaultDelimiter() + a.remainder(defaultDelimiter()));
 			}
 		}
 

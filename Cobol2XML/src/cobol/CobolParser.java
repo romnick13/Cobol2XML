@@ -66,15 +66,15 @@ public class CobolParser {
 		
 		a.add( HexadecimalData());
 		
-		a.add(MoveFunction());
+		a.add( MoveFunction());
 		
-		a.add(DisplayFunction());
+		a.add( DisplayFunction());
 		
-		a.add(AcceptFunction());
+		a.add( AcceptFunction());
 		
-		a.add(CallMethod());
+		a.add( CallMethod());
 		
-		a.add(ComputeMethod());
+		a.add( ComputeMethod());
 		
 		a.add(new Empty());
 		return a;
