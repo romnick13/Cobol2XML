@@ -79,6 +79,13 @@ public class CobolParser {
 		a.add(new Empty());
 		return a;
 	}
+	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Compute = Word;
+	 *
+	 */
 	protected Parser ComputeMethod() {
 		Sequence s = new Sequence() ;
 		s.add(new CaselessLiteral("compute") );
@@ -87,6 +94,12 @@ public class CobolParser {
 		return s;
 	}
 	
+	/*
+	 * Return a parser that will recognize the grammar:
+	 * 
+	 *    Call Function = Word;
+	 *
+	 */
 	protected Parser CallMethod() {
 		Sequence s = new Sequence() ;
 		s.add(new CaselessLiteral("call") );
@@ -132,7 +145,8 @@ public class CobolParser {
 	protected Parser MoveFunction() {
 		Sequence s = new Sequence();
 		s.add(new CaselessLiteral("move"));
-		s.add(new Word().setAssembler(new MoveAssembler()));
+		s.add(new Word());
+		s.setAssembler(new MoveAssembler());
 		return s;
 	}
 	/*
@@ -153,7 +167,7 @@ public class CobolParser {
 	 *
 	 */
 	protected Parser PerformMethod() {
-		Sequence s = new Sequence() ;
+		Sequence s = new Sequence();
 		s.add(new CaselessLiteral("perform"));
 		s.add(new Word().setAssembler(new PerformAssembler()));
 		return s;	

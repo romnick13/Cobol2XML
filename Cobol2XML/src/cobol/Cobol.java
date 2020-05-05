@@ -35,11 +35,15 @@ public class Cobol implements PubliclyCloneable {
 	protected String constantName;
 	protected double constantValue;
 	protected int lineNumber = 0;
+	//Updated values
 	protected String remarks, compute;
 	protected String perform, hexData, move, display, accept;
-	protected String call, using;
+	protected String call, using;//method call & using indicates the variable used
 	
-	
+	/**
+	 * Accessors and Mutators
+	 * @return
+	 */
 	public String getCompute() {
 		return compute;
 	}
@@ -58,11 +62,6 @@ public class Cobol implements PubliclyCloneable {
 	public void setUsing(String using) {
 		this.using = using;
 	}
-	
-	/**
-	 * Accessor and Mutators
-	 * @return
-	 */
 	public String getAccept() {
 		return accept;
 	}

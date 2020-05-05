@@ -28,25 +28,61 @@
         <base_16 Line_Number="88"/>
         <base_16 Value="16.0"/>
     </Constant>
-    <hex_dec_data>000101202303404505606707808909A10B11C12D13E14F15</hex_dec_data>
+    <hex_dec_data>
+        <method>000101202303404505606707808909A10B11C12D13E14F15</method>
+    </hex_dec_data>
     <division>procedure</division>
-    <display_function>"Base:  " no</display_function>
-    <accept_funtion>current_base convert</accept_funtion>
-    <display_function>"Value: " no</display_function>
-    <accept_funtion>entry_char </accept_funtion>
-    <perform>base-to-decimal thru base-to-decimal-ex</perform>
-    <display_function>"Decimal  value: " entry_char</display_function>
-    <perform>decimal-to-base thru decimal-to-base-ex</perform>
-    <display_function>"Base: " current_base " value: " entry_char</display_function>
-    <accept_funtion>omitted </accept_funtion>
-    <comment>convert from decimal to base system</comment>
-    <move_function>entry_number to w_number</move_function>
-    <move_function>spaces to entry_char</move_function>
-    <perform>until w_number &lt; current_base</perform>
-    <move_function>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</move_function>
-    <move_function>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</move_function>
-    <comment>convert from base to dicimal system</comment>
-    <comment>allineamento a destra della variabile entry_char ( ver 2.3 0.1 o sup )</comment>
+    <display_function>
+        <method>"Base:  " no</method>
+    </display_function>
+    <accept_funtion>
+        <method>current_base convert</method>
+    </accept_funtion>
+    <display_function>
+        <method>"Value: " no</method>
+    </display_function>
+    <accept_funtion>
+        <method>entry_char </method>
+    </accept_funtion>
+    <perform>
+        <method>base-to-decimal thru base-to-decimal-ex</method>
+    </perform>
+    <display_function>
+        <method>"Decimal  value: " entry_char</method>
+    </display_function>
+    <perform>
+        <method>decimal-to-base thru decimal-to-base-ex</method>
+    </perform>
+    <display_function>
+        <method>"Base: " current_base " value: " entry_char</method>
+    </display_function>
+    <accept_funtion>
+        <method>omitted </method>
+    </accept_funtion>
+    <all_comments>
+        <comment>convert from decimal to base system</comment>
+    </all_comments>
+    <move_function>
+        <method>entry_number to w_number</method>
+    </move_function>
+    <move_function>
+        <method>spaces to entry_char</method>
+    </move_function>
+    <perform>
+        <method>until w_number &lt; current_base</method>
+    </perform>
+    <move_function>
+        <method>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</method>
+    </move_function>
+    <move_function>
+        <method>hex_value ( hex_idx ) to entry_char ( ind : 1.0 )</method>
+    </move_function>
+    <all_comments>
+        <comment>convert from base to dicimal system</comment>
+    </all_comments>
+    <all_comments>
+        <comment>allineamento a destra della variabile entry_char ( ver 2.3 0.1 o sup )</comment>
+    </all_comments>
     <Call_Method>
         <call var_used="&quot;c$justify&quot;"/>
         <call method=" entry_char &quot;R&quot; ."/>
@@ -55,8 +91,16 @@
         <call var_used="&quot;c$toupper&quot;"/>
         <call method=" entry_char , value 16.0"/>
     </Call_Method>
-    <perform>test after varying ind from 1.0 by 1.0 until ind = 16.0</perform>
-    <move_function>dec_value ( hex_idx ) to rest_divide</move_function>
-    <compute>w_number=w_number+rest_divide*current_base**(16.0-ind)</compute>
-    <move_function>w_number to entry_number .</move_function>
+    <perform>
+        <method>test after varying ind from 1.0 by 1.0 until ind = 16.0</method>
+    </perform>
+    <move_function>
+        <method>dec_value ( hex_idx ) to rest_divide</method>
+    </move_function>
+    <compute>
+        <method>w_number=w_number+rest_divide*current_base**(16.0-ind)</method>
+    </compute>
+    <move_function>
+        <method>w_number to entry_number .</method>
+    </move_function>
 </cobol>

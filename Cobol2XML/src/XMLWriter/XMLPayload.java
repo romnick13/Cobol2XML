@@ -160,7 +160,7 @@ public class XMLPayload {
 		String commentLine = c.getCommentLine();
 		if (commentLine != null) 
 		{
-			this.addCommentLineElement(commentLine);
+			this.addCommentLineElements(commentLine);
 //			System.out.println(commentLine);
 			//System.out.println("Got Section");  
 			// Add contents of procedure division
@@ -268,18 +268,6 @@ public class XMLPayload {
 		}
 	}
  	
-	void addCommentLineElement(String stringElement) {
-		//  Comment Line element
-		
-		if(stringElement != null) {
-			Element cobolname = doc.createElement("comment");
-			cobolname.appendChild(doc.createTextNode(stringElement));
-			rootElement.appendChild(cobolname);
-		}
-	}
- 	
- 	
- 	
  	void addSectionElement(String stringElement) {
 		//  Section element
 		
@@ -358,7 +346,7 @@ public class XMLPayload {
 	
 	void addConstantValueElement(String constantName,  double constantValue, int lineNumber) 
 	{
-		//  Program ID element
+		//  ConstantValueElement
 		if(constantName != null) 
 		{
 			Element cobolname = doc.createElement("Constant"); 
@@ -393,8 +381,12 @@ public class XMLPayload {
 		//Comment Line element
 		if (stringElement != null) 
 		{
-			Element cobolname = doc.createElement("comment");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			Element cobolname = doc.createElement("all_comments");
+			//create sub-element
+			Element element = doc.createElement("comment");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	}
@@ -408,68 +400,91 @@ public class XMLPayload {
 	}
 	
 	void addPerformMethod(String stringElement) {
+		//Perform elements
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("perform");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			//create sub-element
+			Element element = doc.createElement("method");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	}
 	
 	void addHexadecimalData(String stringElement) {
+		//Hexadecimal elements
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("hex_dec_data");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			//create sub-element
+			Element element = doc.createElement("method");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	}
 	
 	void addMoveData(String stringElement) 
 	{
-		//  Program ID element
+		//Move elements
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("move_function");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			//create sub-element
+			Element element = doc.createElement("method");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	}
 	
 	void addDisplay(String stringElement) 
 	{
-		//  Program ID element
+		//Display elements
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("display_function");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			
+			Element element = doc.createElement("method");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	}
 	
 	void addAccept(String stringElement) 
 	{
-		//  Program ID element
+		//Accept elements
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("accept_funtion");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			
+			Element element = doc.createElement("method");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	}
 
-	void addCallFunction(String variable,  String method) 
+	void addCallFunction(String call,  String using) 
 	{
-		//  Program ID element
-		if(variable != null) 
+		//Call elements
+		if(call != null) 
 		{
 			Element cobolname = doc.createElement("Call_Method"); 
 			
-			//insert name of constant into XML file
+			//insert variable used into XML file
 			Element var = doc.createElement("call");   
 			Attr attrType2 = doc.createAttribute("var_used" );   
-			attrType2.setValue(variable );   
+			attrType2.setValue(call );   
 			var.setAttributeNode(attrType2);   
 			cobolname.appendChild(var);
 			
+			//insert method used
 			Element met = doc.createElement("call");   
 			Attr attrType = doc.createAttribute("method" );   
-			attrType.setValue(method );   
+			attrType.setValue(using );   
 			met.setAttributeNode(attrType);   
 			cobolname.appendChild(met);
 			
@@ -480,10 +495,14 @@ public class XMLPayload {
 	
 	void addCompute(String stringElement) 
 	{
-		//  Program ID element
+		//Compute elements
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("compute");
-			cobolname.appendChild(doc.createTextNode(stringElement));
+			//create sub-elements
+			Element element = doc.createElement("method");         
+			element.setTextContent(stringElement);
+			cobolname.appendChild(element);
+			
 			rootElement.appendChild(cobolname);
 		}
 	} 

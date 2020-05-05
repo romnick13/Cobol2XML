@@ -4,7 +4,7 @@ import parse.Assembler;
 import parse.Assembly;
 import parse.tokens.Token;
 
-public class MoveAssembler extends Assembler{
+public class MoveAssembler extends Assembler {
 
 	@Override
 	public void workOn(Assembly a) {
