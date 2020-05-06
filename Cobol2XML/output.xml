@@ -29,7 +29,7 @@
         <base_16 Value="16.0"/>
     </Constant>
     <hex_dec_data>
-        <method>000101202303404505606707808909A10B11C12D13E14F15</method>
+        <hex>000101202303404505606707808909A10B11C12D13E14F15</hex>
     </hex_dec_data>
     <division>procedure</division>
     <display_function>

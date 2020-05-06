@@ -156,8 +156,10 @@ public class CobolParser {
 	 *
 	 */
 	protected Parser HexadecimalData() {
-		Sequence s = new Sequence() ;
-		s.add(new QuotedString().setAssembler(new HexDataAssembler()));
+		Sequence s = new Sequence();
+		s.add(new QuotedString());
+		s.add(new Symbol('.').discard());
+		s.setAssembler(new HexDataAssembler());
 		return s;
 	}
 	/*

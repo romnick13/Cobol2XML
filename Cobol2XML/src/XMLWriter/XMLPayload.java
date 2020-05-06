@@ -62,31 +62,31 @@ public class XMLPayload {
 		/*
 		 * add call elements
 		 */
-		String compute = c.getCompute();
-		if (compute != null) 
+		String callMethod = c.getCall();
+		if (callMethod != null) 
 		{
-			this.addCompute( compute);
-			//System.out.println("Got Section"); 
+			this.addCallFunction( callMethod, c.getUsing());
+			//System.out.println("call elements"); 
 			//Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("call null");
 		}	//end method addElements()
 		
 		/*
 		 * add call elements
 		 */
-		String callMethod = c.getCall();
-		if (callMethod != null) 
+		String compute = c.getCompute();
+		if (compute != null) 
 		{
-			this.addCallFunction( callMethod, c.getUsing());
-			//System.out.println("Got Section"); 
+			this.addCompute( compute);
+			//System.out.println("Got compute"); 
 			//Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("compute null");
 		}	//end method addElements()
 		
 		String accept = c.getAccept();
@@ -94,8 +94,7 @@ public class XMLPayload {
 		{
 			this.addAccept(accept);
 //			System.out.println(accept);
-			//System.out.println("Got Section");  
-			// Add contents of procedure division
+			
 		}
 		else 
 		{
@@ -107,8 +106,7 @@ public class XMLPayload {
 		{
 			this.addDisplay(display);
 //			System.out.println(display);
-			//System.out.println("Got Section");  
-			// Add contents of procedure division
+			
 		}
 		else 
 		{
@@ -120,8 +118,7 @@ public class XMLPayload {
 		{
 			this.addMoveData(moveMethod);
 //			System.out.println(move);
-			//System.out.println("Got Section");  
-			// Add contents of procedure division
+			
 		}
 		else 
 		{
@@ -133,8 +130,7 @@ public class XMLPayload {
 		{
 			this.addHexadecimalData(hexData);
 //			System.out.println(commentLine);
-			//System.out.println("hex");  
-			// Add contents of procedure division
+			
 		}
 		else 
 		{
@@ -162,8 +158,7 @@ public class XMLPayload {
 		{
 			this.addCommentLineElements(commentLine);
 //			System.out.println(commentLine);
-			//System.out.println("Got Section");  
-			// Add contents of procedure division
+			
 		}
 		else 
 		{
@@ -178,11 +173,10 @@ public class XMLPayload {
 		{
 			this.addConstantValueElement( constantName, c.getConstantValue(), c.getLineNumber());
 			//System.out.println("Got Section"); 
-			//Add contents of procedure division
 		}
 		else 
 		{
-			//System.out.println("Comment Line null");
+			//System.out.println("Constant null");
 		}	//end method addElements()
 		
 		/*
@@ -192,7 +186,6 @@ public class XMLPayload {
 		if (sectionName != null) {
 			this.addSectionElement( sectionName );
 			//System.out.println("Got Section");
-			// Add contents of procedure division
 		} else {
 			//System.out.println("Section Name null");
 		}
@@ -417,7 +410,7 @@ public class XMLPayload {
 		if (stringElement != null) {
 			Element cobolname = doc.createElement("hex_dec_data");
 			//create sub-element
-			Element element = doc.createElement("method");         
+			Element element = doc.createElement("hex");         
 			element.setTextContent(stringElement);
 			cobolname.appendChild(element);
 			
@@ -482,12 +475,11 @@ public class XMLPayload {
 			cobolname.appendChild(var);
 			
 			//insert method used
-			Element met = doc.createElement("call");   
+			Element method = doc.createElement("call");   
 			Attr attrType = doc.createAttribute("method" );   
 			attrType.setValue(using );   
-			met.setAttributeNode(attrType);   
-			cobolname.appendChild(met);
-			
+			method.setAttributeNode(attrType);   
+			cobolname.appendChild(method);
 					
 			rootElement.appendChild(cobolname);
 		}
