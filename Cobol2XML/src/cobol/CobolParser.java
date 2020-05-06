@@ -60,8 +60,6 @@ public class CobolParser {
 		
 		a.add( DateWritten() );
 		
-		a.add( Remarks() );
-		
 		a.add( PerformMethod());
 		
 		a.add( HexadecimalData());
@@ -173,14 +171,7 @@ public class CobolParser {
 		s.add(new CaselessLiteral("perform"));
 		s.add(new Word().setAssembler(new PerformAssembler()));
 		return s;	
-	}
-	
-
-	protected Parser Remarks() {
-		Sequence s = new Sequence() ;
-		s.add(new CaselessLiteral("remarks").setAssembler(new RemarksAssembler()));
-		return s;
-	}
+	}	
 
 	/*
 	 * Return a parser that will recognize the grammar:

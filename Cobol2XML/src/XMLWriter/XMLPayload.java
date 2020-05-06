@@ -202,15 +202,6 @@ public class XMLPayload {
 			//System.out.println("Division Name null");
 		}
 		
-		String remarkComment = c.getRemarks();
-		if (remarkComment != null) {
-			this.addRemarksComment(remarkComment);
-			//System.out.println("Got Section");
-			// Add contents of procedure division
-		} else {
-			//System.out.println("Division Name null");
-		}
-		
 		/*
 		 *  add ProgramID element
 		 */		
@@ -380,14 +371,6 @@ public class XMLPayload {
 			element.setTextContent(stringElement);
 			cobolname.appendChild(element);
 			
-			rootElement.appendChild(cobolname);
-		}
-	}
-	
-	void addRemarksComment(String stringElement) {
-		if(stringElement != null) {
-			Element cobolname = doc.createElement("remarks");
-			cobolname.appendChild(doc.createTextNode(stringElement));
 			rootElement.appendChild(cobolname);
 		}
 	}

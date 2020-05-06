@@ -36,7 +36,7 @@ public class Cobol implements PubliclyCloneable {
 	protected double constantValue;
 	protected int lineNumber = 0;
 	//Updated values
-	protected String remarks, compute;
+	protected String compute;
 	protected String perform, hexData, move, display, accept;
 	protected String call, using;//method call & using indicates the variable used
 	
@@ -112,13 +112,6 @@ public class Cobol implements PubliclyCloneable {
 		this.lineNumber = lineNumber;
 	}
 	
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
 	/**
 	 * Return a copy of this object.
 	 *
